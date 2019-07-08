@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
+import Homepage from './Components/Homepage/Homepage'
 
 const App = () => {
   return (
     <div>
-      <header>
-        <h1>React Webstore</h1>
-      </header>
+      <Homepage />
     </div>
   );
 }
