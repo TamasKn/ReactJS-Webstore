@@ -5,7 +5,7 @@ import Homepage from './Pages/Homepage/Homepage'
 import Shop from './Pages/Shop/Shop'
 import Header from './Components/Header/Header'
 import SignForms from './Pages/SignForms/SignForms'
-import { auth } from './Firebase/Firebase.utils'
+import { auth, createUser } from './Firebase/Firebase.utils'
 
 class App extends React.Component {
 
@@ -19,8 +19,21 @@ class App extends React.Component {
   unsubscribeAuth = null
 
   componentDidMount() {
-    this.unsubscribeAuth = auth.onAuthStateChanged(user => {
-      this.setState({userData: user})
+    this.unsubscribeAuth = auth.onAuthStateChanged(async userAuth => {
+      if(userAuth) {
+
+        const userRef = await createUser(userAuth)
+
+        userRef.onSnapshot(snap => {
+          this.setState({
+            userData: {
+              id: snap.id,
+              ...snap.data()
+            }
+          }, () => console.log(this.state))
+        })
+      }
+      this.setState({userData: userAuth})
     })
   }
 
