@@ -30,7 +30,7 @@ class App extends React.Component {
               id: snap.id,
               ...snap.data()
             }
-          }, () => console.log(this.state))
+          })
         })
       }
       this.setState({userData: userAuth})

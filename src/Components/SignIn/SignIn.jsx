@@ -2,7 +2,7 @@ import React from 'react'
 import './SignIn.scss'
 import FormInput from '../FormInput/FormInput'
 import CustomButton from '../../Components/CustomButton/CustomButton'
-import {signInWithGoogle} from '../../Firebase/Firebase.utils'
+import {auth, signInWithGoogle} from '../../Firebase/Firebase.utils'
 
 class SingIn extends React.Component {
 
@@ -14,10 +14,17 @@ class SingIn extends React.Component {
         }
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault()
 
-        this.setState({email: "", password: ""})
+        const {email, password} = this.state
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password)
+            this.setState({email: "", password: ""})
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     handleChange = event => {
