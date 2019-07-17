@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './Header.scss'
 import {auth} from '../../Firebase/Firebase.utils'
+import {connect} from 'react-redux'
 
 const Header = ({userData}) => {
     return(
@@ -24,4 +25,8 @@ const Header = ({userData}) => {
     )
 }
 
-export default Header
+const mapState = state => ({
+    userData: state.user.userData
+})
+
+export default connect(mapState)(Header)
