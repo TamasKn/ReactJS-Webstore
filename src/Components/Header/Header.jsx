@@ -4,8 +4,9 @@ import './Header.scss'
 import {auth} from '../../Firebase/Firebase.utils'
 import {connect} from 'react-redux'
 import CartIcon from '../CartIcon/CartIcon'
+import CartDropdown from '../CartDropdown/CartDropdown'
 
-const Header = ({userData}) => {
+const Header = ({userData, hidden}) => {
     return(
         <div className='header'>
             <Link className='logo-container' to='/' >
@@ -23,12 +24,19 @@ const Header = ({userData}) => {
                 <CartIcon />
 
             </div>
+            {
+                (hidden)
+                ? null
+                : <CartDropdown />
+            }
+            
         </div>
     )
 }
 
-const mapState = state => ({
-    userData: state.user.userData
+const mapState = ({user: {userData}, cart: {hidden} }) => ({
+    userData,
+    hidden
 })
 
 export default connect(mapState)(Header)
