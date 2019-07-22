@@ -1,3 +1,5 @@
+// Acting as a cache to avoid re-render the component every time if a value changes
+
 import { createSelector } from 'reselect'
 
 const selectCart = state => state.cart
