@@ -7,6 +7,7 @@ import CartIcon from '../CartIcon/CartIcon'
 import CartDropdown from '../CartDropdown/CartDropdown'
 import { createStructuredSelector } from 'reselect'
 import { selectUser } from '../../Redux/UserReducer/UserSelectors'
+import { selectCartToggle } from '../../Redux/CartReducer/CartSelectors'
 
 const Header = ({userData, hidden}) => {
     return(
@@ -36,9 +37,9 @@ const Header = ({userData, hidden}) => {
     )
 }
 
-const mapState = (state) => ({
-    userData: selectUser
-    hidden: null
+const mapState = createStructuredSelector({
+    userData: selectUser,
+    hidden: selectCartToggle
 })
 
 export default connect(mapState)(Header)
