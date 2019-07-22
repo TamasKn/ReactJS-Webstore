@@ -5,6 +5,7 @@ import Homepage from './Pages/Homepage/Homepage'
 import Shop from './Pages/Shop/Shop'
 import Header from './Components/Header/Header'
 import SignForms from './Pages/SignForms/SignForms'
+import Checkout from './Pages/Checkout/Checkout'
 import { auth, createUser } from './Firebase/Firebase.utils'
 import {connect} from 'react-redux'
 import {setCurrentUser} from './Redux/UserReducer/UserAction'
@@ -46,12 +47,13 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={Shop} />
+          <Route exact path='/checkout' component={Checkout} />
           <Route exact path='/signin' render={ 
-			  () => this.props.userData 
-			  	? (<Redirect to='/' />) 
-				: (<SignForms />) 
-				}
-			/>
+            () => this.props.userData 
+              ? (<Redirect to='/' />) 
+              : (<SignForms />) 
+            }
+			    />
         </Switch>
         
       </div>
