@@ -8,12 +8,14 @@ import CartDropdown from '../CartDropdown/CartDropdown'
 import { createStructuredSelector } from 'reselect'
 import { selectUser } from '../../Redux/UserReducer/UserSelectors'
 import { selectCartToggle } from '../../Redux/CartReducer/CartSelectors'
+import logo from '../../static/dogday_logo.png'
+
 
 const Header = ({userData, hidden}) => {
     return(
         <div className='header'>
             <Link className='logo-container' to='/' >
-                <span className='logo' >Logo</span>
+                <img className='logo' src={logo} width='100px' height='100px' />
             </Link>
             <div className='options'>
                 <Link className='option' to='/shop'>SHOP</Link>

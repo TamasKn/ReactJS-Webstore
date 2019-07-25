@@ -1,5 +1,6 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
+import logo from '../../static/dogday_logo.png'
 
 const StripeButton = ({ price }) => {
 
@@ -16,7 +17,7 @@ const StripeButton = ({ price }) => {
             name='Webstore'
             billingAddress
             shippingAddress
-            image=''
+            image={logo}
             description={`Your total is \u00A3 ${price}` }
             amount={priceConvert}
             panelLabel='Pay Now'
