@@ -6,6 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartItems, selectCartTotal } from '../../Redux/CartReducer/CartSelectors'
 
 import CheckoutItem from '../../Components/CheckoutItem/CheckoutItem'
+import StripeButton from '../../Components/Stripe/StripeButton'
 
 const Checkout = ({cartItems, total}) => {
     return(
@@ -32,6 +33,11 @@ const Checkout = ({cartItems, total}) => {
                 <CheckoutItem key={item.id} cartItem={item} />
             ))}
             <div className='total'>TOTAL: &pound; {total}</div>
+            <div style={{color:'red'}}>
+                TEST ONLY
+            </div>
+            <StripeButton price={total} />
+            
 
         </div>
     )
